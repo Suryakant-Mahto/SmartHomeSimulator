@@ -36,6 +36,39 @@ def kitchenDoorClear():
     kitchenDoorRed(0)
     kitchenDoorGreen(0)
     kitchenDoorBlue(0)
+
+# bathroom Door
+
+def bathroomDoorRed(inp):
+    deviceArray[4] = inp;
+
+def bathroomDoorGreen(inp):
+    deviceArray[3] = inp;
+
+def bathroomDoorBlue(inp):
+    deviceArray[2] = inp;
+
+def bathroomDoorMagenta(inp):
+    bathroomDoorRed(inp)
+    bathroomDoorBlue(inp)
+    
+def bathroomDoorCyan(inp):
+    bathroomDoorGreen(inp)
+    bathroomDoorBlue(inp)
+    
+def bathroomDoorYellow(inp):
+    bathroomDoorGreen(inp)
+    bathroomDoorRed(inp)
+    
+def bathroomDoorWhite(inp):
+    bathroomDoorRed(inp)
+    bathroomDoorGreen(inp)
+    bathroomDoorBlue(inp)
+
+def bathroomDoorClear():
+    bathroomDoorRed(0)
+    bathroomDoorGreen(0)
+    bathroomDoorBlue(0)
     
 # main Door
 
@@ -69,3 +102,69 @@ def mainDoorClear():
     mainDoorRed(0)
     mainDoorGreen(0)
     mainDoorBlue(0)
+    
+# bedroom Door
+
+def bedroomDoorRed(inp):
+    deviceArray[27] = inp;
+
+def bedroomDoorGreen(inp):
+    deviceArray[26] = inp;
+
+def bedroomDoorBlue(inp):
+    deviceArray[25] = inp;
+
+def bedroomDoorMagenta(inp):
+    bedroomDoorRed(inp)
+    bedroomDoorBlue(inp)
+    
+def bedroomDoorCyan(inp):
+    bedroomDoorGreen(inp)
+    bedroomDoorBlue(inp)
+    
+def bedroomDoorYellow(inp):
+    bedroomDoorGreen(inp)
+    bedroomDoorRed(inp)
+    
+def bedroomDoorWhite(inp):
+    bedroomDoorRed(inp)
+    bedroomDoorGreen(inp)
+    bedroomDoorBlue(inp)
+
+def bedroomDoorClear():
+    bedroomDoorRed(0)
+    bedroomDoorGreen(0)
+    bedroomDoorBlue(0)
+    
+# studyroom Door
+
+def studyroomDoorRed(inp):
+    deviceArray[30] = inp;
+
+def studyroomDoorGreen(inp):
+    deviceArray[29] = inp;
+
+def studyroomDoorBlue(inp):
+    deviceArray[28] = inp;
+
+def studyroomDoorMagenta(inp):
+    studyroomDoorRed(inp)
+    studyroomDoorBlue(inp)
+    
+def studyroomDoorCyan(inp):
+    studyroomDoorGreen(inp)
+    studyroomDoorBlue(inp)
+    
+def studyroomDoorYellow(inp):
+    studyroomDoorGreen(inp)
+    studyroomDoorRed(inp)
+    
+def studyroomDoorWhite(inp):
+    studyroomDoorRed(inp)
+    studyroomDoorGreen(inp)
+    studyroomDoorBlue(inp)
+
+def studyroomDoorClear():
+    studyroomDoorRed(0)
+    studyroomDoorGreen(0)
+    studyroomDoorBlue(0)
