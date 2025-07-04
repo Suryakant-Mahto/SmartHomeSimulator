@@ -243,3 +243,29 @@ def chimneyLightRed(inp):
     deviceArray[24] = inp
 def chimneyLightBlue(inp):
     deviceArray[23] = inp
+    
+# -------------- sleep indicator control -------------
+# bedroom
+def user1BedroomSleep(inp):
+    deviceArray[34] = inp;
+def user2BedroomSleep(inp):
+    deviceArray[33] = inp;
+def user3BedroomSleep(inp):
+    deviceArray[32] = inp;
+    
+# hall
+def user1HallSleep(inp):
+    deviceArray[37] = inp;
+def user2HallSleep(inp):
+    deviceArray[36] = inp;
+def user3HallSleep(inp):
+    deviceArray[35] = inp;
+    
+# studyroom
+def user1StudyroomSleep(inp):
+    deviceArray[38] = inp;
+def user2StudyroomSleep(inp):
+    deviceArray[40] = inp;
+def user3StudyroomSleep(inp):
+    deviceArray[64] = inp; 
+    
