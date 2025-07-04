@@ -202,3 +202,38 @@ def geyserLightGreen(inp):
 def geyserLightRed(inp):
     deviceArray[18] = inp;
 
+# ------------ Oven Control --------------------------
+
+def ovenMainLight(inp):
+    deviceArray[22] = inp;
+
+def ovenIndicatorRed(inp):
+    deviceArray[21] = inp;
+    
+def ovenIndicatorGreen(inp):
+    deviceArray[20] = inp;
+    
+def ovenIndicatorBlue(inp):
+    deviceArray[19] = inp;
+
+def ovenIndicatorMagenta(inp):
+    ovenIndicatorRed(inp)
+    ovenIndicatorBlue(inp)
+
+def ovenIndicatorCyan(inp):
+    ovenIndicatorGreen(inp)
+    ovenIndicatorBlue(inp)
+
+def ovenIndicatorYellow(inp):
+    ovenIndicatorRed(inp)
+    ovenIndicatorGreen(inp)
+
+def ovenIndicatorWhite(inp):
+    ovenIndicatorRed(inp)
+    ovenIndicatorGreen(inp)
+    ovenIndicatorBlue(inp)
+
+def ovenIndicatorClear():
+    ovenIndicatorRed(0)
+    ovenIndicatorGreen(0)
+    ovenIndicatorBlue(0)
