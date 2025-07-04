@@ -5,7 +5,6 @@ deviceArray = [0] * 96
 # ---------------- Door Indicator Lights ------------------
 
 # kitchen
-
 def kitchenDoorRed(inp):
     deviceArray[1] = inp;
 
@@ -237,3 +236,10 @@ def ovenIndicatorClear():
     ovenIndicatorRed(0)
     ovenIndicatorGreen(0)
     ovenIndicatorBlue(0)
+
+# --------------- chimney control -------------------
+
+def chimneyLightRed(inp):
+    deviceArray[24] = inp
+def chimneyLightBlue(inp):
+    deviceArray[23] = inp
