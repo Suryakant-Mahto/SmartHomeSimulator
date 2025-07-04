@@ -168,3 +168,18 @@ def studyroomDoorClear():
     studyroomDoorRed(0)
     studyroomDoorGreen(0)
     studyroomDoorBlue(0)
+    
+#----------------------T.V. controls -------------------------
+
+def hallTvPower(inp):
+    deviceArray[14] = inp;
+def hallTv(inp):
+    deviceArray[65] = inp;
+
+def bedroomTvPower(inp):
+    deviceArray[57] = inp;
+def bedroomTv(inp):
+    deviceArray[58] = inp;
+
+
+   
