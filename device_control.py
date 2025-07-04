@@ -169,7 +169,7 @@ def studyroomDoorClear():
     studyroomDoorGreen(0)
     studyroomDoorBlue(0)
     
-#----------------------T.V. controls -------------------------
+#--------------------- T.V. controls -------------------------
 
 def hallTvPower(inp):
     deviceArray[14] = inp;
@@ -181,5 +181,24 @@ def bedroomTvPower(inp):
 def bedroomTv(inp):
     deviceArray[58] = inp;
 
+#-------------- Washing machine controls --------------------
 
-   
+def washingMachineDrumLight(inp):
+    deviceArray[15] = inp;
+def washingMachineControlPanel(inp):
+    deviceArray[16] = inp;
+def washingMachineDrumMotor(inp):
+    deviceArray[39] = inp;
+    
+def washingMachine(inp):
+    washingMachineDrumLight(inp)
+    washingMachineControlPanel(inp)
+    washingMachineDrumMotor(inp)
+
+#------------- Geyser control ----------------------
+    
+def geyserLightGreen(inp):
+    deviceArray[17] = inp;
+def geyserLightRed(inp):
+    deviceArray[18] = inp;
+
