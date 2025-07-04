@@ -268,4 +268,10 @@ def user2StudyroomSleep(inp):
     deviceArray[40] = inp;
 def user3StudyroomSleep(inp):
     deviceArray[64] = inp; 
-    
+
+# ------------------ Fridge control ---------------
+
+def fridgePower(inp):
+    deviceArray[42] = inp;
+def fridgeDoor(inp):
+    deviceArray[41] = inp;
