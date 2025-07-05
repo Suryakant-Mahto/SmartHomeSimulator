@@ -275,3 +275,42 @@ def fridgePower(inp):
     deviceArray[42] = inp;
 def fridgeDoor(inp):
     deviceArray[41] = inp;
+    
+# --------------- cooktop control ------------------
+
+def cooktopIndicatorRed(inp):
+    deviceArray[66] = inp;
+def cooktopIndicatorOrange1(inp):
+    deviceArray[67] = inp;
+def cooktopIndicatorOrange2(inp):
+    deviceArray[68] = inp;
+def cooktopIndicatorOrange3(inp):
+    deviceArray[69] = inp;
+
+def cooktopSmallTop(inp):
+    deviceArray[70] = inp;
+def cooktopMediumTop(inp):
+    deviceArray[72] = inp;
+def cooktopLargeTop(inp):
+    deviceArray[73] = inp;
+    
+def cooktop(inp):
+    cooktopIndicatorRed(inp)
+    cooktopIndicatorOrange1(0)
+    cooktopIndicatorOrange2(0)
+    cooktopIndicatorOrange3(0)
+    cooktopSmallTop(0)
+    cooktopMediumTop(0)
+    cooktopLargeTop(0)
+    
+def cooktopSmall(inp):
+    cooktopIndicatorOrange1(inp)
+    cooktopSmallTop(inp)
+    
+def cooktopMedium(inp):
+    cooktopIndicatorOrange2(inp)
+    cooktopMediumTop(inp)
+
+def cooktopLarge(inp):
+    cooktopIndicatorOrange3(inp)
+    cooktopLargeTop(inp)
