@@ -1,3 +1,4 @@
+import time
 # library for controlling smart home simulator devices
 
 deviceArray = [0] * 96
@@ -314,3 +315,127 @@ def cooktopMedium(inp):
 def cooktopLarge(inp):
     cooktopIndicatorOrange3(inp)
     cooktopLargeTop(inp)
+    
+# ------------------------ AC controls ---------------------------
+
+# int to 4-bit binary conversion
+def IntToBinary(i):
+    binaryValue = [0] * 4
+    if i == 0:
+        return binaryValue;
+    elif i == 1:
+        binaryValue[3] = 1;
+        return binaryValue;
+    elif i == 2:
+        binaryValue[2] = 1;
+        return binaryValue;
+    elif i == 3:
+        binaryValue[3] = 1;
+        binaryValue[2] = 1;
+        return binaryValue;
+    elif i == 4:
+        binaryValue[1] = 1;
+        return binaryValue;
+    elif i == 5:
+        binaryValue[3] = 1;
+        binaryValue[1] = 1;
+        return binaryValue;
+    elif i == 6:
+        binaryValue[1] = 1;
+        binaryValue[2] = 1;
+        return binaryValue;
+    elif i == 7:
+        binaryValue[3] = 1;
+        binaryValue[2] = 1;
+        binaryValue[1] = 1;
+        return binaryValue;
+    elif i == 8:
+        binaryValue[0] = 1;
+        return binaryValue;
+    elif i == 9:
+        binaryValue[0] = 1;
+        binaryValue[3] = 1;
+        return binaryValue;
+    else:
+        print("Invalid data recieved in int to binary conversion module, expected 0-9");
+        return binaryValue;
+
+# commom data
+def data0(inp):
+    deviceArray[46] = inp;
+def data1(inp):
+    deviceArray[45] = inp;
+def data2(inp):
+    deviceArray[44] = inp;
+def data3(inp):
+    deviceArray[43] = inp;
+    
+def dataReset():
+    data0(0);
+    data1(0);
+    data2(0);
+    data3(0);
+    
+def resetLatch():
+    deviceArray[48] = 0;
+    deviceArray[49] = 0;
+    
+    deviceArray[52] = 0;
+    deviceArray[53] = 0;
+    
+    deviceArray[59] = 0;
+    deviceArray[60] = 0;
+    
+# 7-seg display set data
+def setDigit(d,t):
+    resetLatch()
+    binaryValue = IntToBinary(t);
+    data0(binaryvalue[0]);
+    data1(binaryvalue[1]);
+    data2(binaryvalue[2]);
+    data3(binaryvalue[3]);
+    
+    deviceArray[d] = 1
+
+# 2 digit data set logic
+def setDisplay(d1,d2,t):
+    t1 = int(t/10);
+    t2 = int(t%10);  
+    setDigit(d1,t1)
+    time.sleep(0.5)
+    setDigit(d2,t2)
+    
+# Bedroom AC
+def bedroomACPower(inp):
+    deviceArray[51] = inp;
+def bedroomACActive(inp):
+    deviceArray[50] = inp;
+    
+def bedroomACSetTemp(t):
+    bedroomACDigit1Index = 48;
+    bedroomACDigit2Index = 49;
+    setDisplay(bedroomACDigit1Index,bedroomACDigit2Index,t);
+
+# Studyroom AC
+def studyroomACPower(inp):
+    deviceArray[56] = inp;
+def studyroomACActive(inp):
+    deviceArray[54] = inp;
+    
+def studyroomACSetTemp(t):
+    bedroomACDigit1Index = 52;
+    bedroomACDigit2Index = 53;
+    setDisplay(studyroomACDigit1Index,studyroomACDigit2Index,t);
+
+# Hall AC
+def hallACPower(inp):
+    deviceArray[62] = inp;
+def hallACActive(inp):
+    deviceArray[61] = inp;
+    
+def hallACSetTemp(t):
+    hallACDigit1Index = 59;
+    hallACDigit2Index = 60;
+    setDisplay(hallACDigit1Index,hallACDigit2Index,t);
+
+    
