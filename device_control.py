@@ -389,13 +389,15 @@ def resetLatch():
 # 7-seg display set data
 def setDigit(d,t):
     resetLatch()
-    binaryValue = IntToBinary(t);
+    binaryvalue = [0] * 4
+    binaryvalue = IntToBinary(t);
     data0(binaryvalue[0]);
     data1(binaryvalue[1]);
     data2(binaryvalue[2]);
     data3(binaryvalue[3]);
     
     deviceArray[d] = 1
+
 
 # 2 digit data set logic
 def setDisplay(d1,d2,t):
@@ -410,6 +412,7 @@ def bedroomACPower(inp):
     deviceArray[51] = inp;
 def bedroomACActive(inp):
     deviceArray[50] = inp;
+    bedroomACSetTemp(24);
     
 def bedroomACSetTemp(t):
     bedroomACDigit1Index = 48;
@@ -421,6 +424,7 @@ def studyroomACPower(inp):
     deviceArray[56] = inp;
 def studyroomACActive(inp):
     deviceArray[54] = inp;
+    studyroomACSetTemp(24);
     
 def studyroomACSetTemp(t):
     bedroomACDigit1Index = 52;
@@ -432,10 +436,12 @@ def hallACPower(inp):
     deviceArray[62] = inp;
 def hallACActive(inp):
     deviceArray[61] = inp;
+    hallACSetTemp(24);
     
 def hallACSetTemp(t):
     hallACDigit1Index = 59;
     hallACDigit2Index = 60;
     setDisplay(hallACDigit1Index,hallACDigit2Index,t);
 
+# to do next -- add default temperature for initial active state (24)
     
