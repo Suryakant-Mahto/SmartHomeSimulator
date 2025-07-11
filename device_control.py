@@ -503,3 +503,33 @@ def bathroomLight1(inp):
 def bathroomLights(inp):
     bathroomLight1(inp)
     
+# Hall
+def hallLightsPower(inp):
+    deviceArray(79);
+
+def hallLight1(inp):
+    deviceArray(85);
+def hallLight2(inp):
+    deviceArray(86);
+def hallLight3(inp):
+    deviceArray(88);
+def hallLight4(inp):
+    deviceArray(89);
+def hallLight5(inp):
+    deviceArray(90);
+def hallLight6(inp):
+    deviceArray(91);
+def hallLight7(inp):
+    deviceArray(92);
+def hallLight8(inp):
+    deviceArray(93);
+
+def hallLights(inp):
+    hallLight1(inp)
+    hallLight2(inp)
+    hallLight3(inp)
+    hallLight4(inp)
+    hallLight5(inp)
+    hallLight6(inp)
+    hallLight7(inp)
+    hallLight8(inp)
