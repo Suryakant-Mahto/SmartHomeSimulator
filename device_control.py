@@ -477,3 +477,18 @@ def kitchenLights(inp):
     kitchenLight1(inp)
     kitchenLight2(inp)
 
+# Bedroom
+def bedroomLightsPower(inp):
+    deviceArray(71);
+
+def bedroomLight1(inp):
+    deviceArray(82);
+def bedroomLight2(inp):
+    deviceArray(83);
+def bedroomLight3(inp):
+    deviceArray(84);
+
+def bedroomLights(inp):
+    bedroomLight1(inp)
+    bedroomLight2(inp)
+    bedroomLight3(inp)
