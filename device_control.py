@@ -442,6 +442,24 @@ def hallACSetTemp(t):
     hallACDigit1Index = 59;
     hallACDigit2Index = 60;
     setDisplay(hallACDigit1Index,hallACDigit2Index,t);
-
-# to do next -- add default temperature for initial active state (24)
     
+# ------------------ Light controls ----------------------
+
+# Outdoor
+def outdoorLightsPower(inp):
+    deviceArray(55);
+    
+def outdoorLight1(inp):
+    deviceArray(77);
+def outdoorLight2(inp):
+    deviceArray(76);
+def outdoorLight3(inp):
+    deviceArray(75);
+def outdoorLight4(inp):
+    deviceArray(74);
+
+def OutdoorLights(inp):
+    outdoorLight1(inp)
+    outdoorLight2(inp)
+    outdoorLight3(inp)
+    outdoorLight4(inp)
