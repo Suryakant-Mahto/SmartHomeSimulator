@@ -447,16 +447,16 @@ def hallACSetTemp(t):
 
 # Outdoor
 def outdoorLightsPower(inp):
-    deviceArray(55);
+    deviceArray[55];
     
 def outdoorLight1(inp):
-    deviceArray(77);
+    deviceArray[77];
 def outdoorLight2(inp):
-    deviceArray(76);
+    deviceArray[76];
 def outdoorLight3(inp):
-    deviceArray(75);
+    deviceArray[75];
 def outdoorLight4(inp):
-    deviceArray(74);
+    deviceArray[74];
 
 def OutdoorLights(inp):
     outdoorLight1(inp)
@@ -466,12 +466,12 @@ def OutdoorLights(inp):
 
 # Kitchen
 def kitchenLightsPower(inp):
-    deviceArray(63);
+    deviceArray[63];
 
 def kitchenLight1(inp):
-    deviceArray(78);
+    deviceArray[78];
 def kitchenLight2(inp):
-    deviceArray(80);
+    deviceArray[80];
     
 def kitchenLights(inp):
     kitchenLight1(inp)
@@ -479,14 +479,14 @@ def kitchenLights(inp):
 
 # Bedroom
 def bedroomLightsPower(inp):
-    deviceArray(71);
+    deviceArray[71];
 
 def bedroomLight1(inp):
-    deviceArray(82);
+    deviceArray[82];
 def bedroomLight2(inp):
-    deviceArray(83);
+    deviceArray[83];
 def bedroomLight3(inp):
-    deviceArray(84);
+    deviceArray[84];
 
 def bedroomLights(inp):
     bedroomLight1(inp)
@@ -495,34 +495,34 @@ def bedroomLights(inp):
 
 # Bathroom
 def bathroomLightsPower(inp):
-    deviceArray(47);
+    deviceArray[47];
 
 def bathroomLight1(inp):
-    deviceArray(81);
+    deviceArray[81];
 
 def bathroomLights(inp):
     bathroomLight1(inp)
     
 # Hall
 def hallLightsPower(inp):
-    deviceArray(79);
+    deviceArray[79];
 
 def hallLight1(inp):
-    deviceArray(85);
+    deviceArray[85];
 def hallLight2(inp):
-    deviceArray(86);
+    deviceArray[86];
 def hallLight3(inp):
-    deviceArray(88);
+    deviceArray[88];
 def hallLight4(inp):
-    deviceArray(89);
+    deviceArray[89];
 def hallLight5(inp):
-    deviceArray(90);
+    deviceArray[90];
 def hallLight6(inp):
-    deviceArray(91);
+    deviceArray[91];
 def hallLight7(inp):
-    deviceArray(92);
+    deviceArray[92];
 def hallLight8(inp):
-    deviceArray(93);
+    deviceArray[93];
 
 def hallLights(inp):
     hallLight1(inp)
@@ -533,3 +533,16 @@ def hallLights(inp):
     hallLight6(inp)
     hallLight7(inp)
     hallLight8(inp)
+    
+# Studyroom
+def studyroomLightPower(inp):
+    deviceArray[87];
+
+def studyroomLight1(inp):
+    deviceArray[94];
+def studyroomLight2(inp):
+    deviceArray[95];
+
+def studyroomLights(inp):
+    studyroomLight1(inp)
+    studyroomLight2(inp)
