@@ -492,3 +492,14 @@ def bedroomLights(inp):
     bedroomLight1(inp)
     bedroomLight2(inp)
     bedroomLight3(inp)
+
+# Bathroom
+def bathroomLightsPower(inp):
+    deviceArray(47);
+
+def bathroomLight1(inp):
+    deviceArray(81);
+
+def bathroomLights(inp):
+    bathroomLight1(inp)
+    
