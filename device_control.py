@@ -463,3 +463,17 @@ def OutdoorLights(inp):
     outdoorLight2(inp)
     outdoorLight3(inp)
     outdoorLight4(inp)
+
+# Kitchen
+def kitchenLightsPower(inp):
+    deviceArray(63);
+
+def kitchenLight1(inp):
+    deviceArray(78);
+def kitchenLight2(inp):
+    deviceArray(80);
+    
+def kitchenLights(inp):
+    kitchenLight1(inp)
+    kitchenLight2(inp)
+
