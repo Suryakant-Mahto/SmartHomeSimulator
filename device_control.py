@@ -7,13 +7,13 @@ deviceArray = [0] * 96
 
 # kitchen
 def kitchenDoorRed(inp):
-    deviceArray[1] = inp;
+    deviceArray[25] = inp;
 
 def kitchenDoorGreen(inp):
-    deviceArray[0] = inp;
+    deviceArray[24] = inp;
 
 def kitchenDoorBlue(inp):
-    deviceArray[31] = inp;
+    deviceArray[23] = inp;
 
 def kitchenDoorMagenta(inp):
     kitchenDoorRed(inp)
@@ -40,13 +40,13 @@ def kitchenDoorClear():
 # bathroom Door
 
 def bathroomDoorRed(inp):
-    deviceArray[4] = inp;
+    deviceArray[28] = inp;
 
 def bathroomDoorGreen(inp):
-    deviceArray[3] = inp;
+    deviceArray[27] = inp;
 
 def bathroomDoorBlue(inp):
-    deviceArray[2] = inp;
+    deviceArray[26] = inp;
 
 def bathroomDoorMagenta(inp):
     bathroomDoorRed(inp)
@@ -73,13 +73,13 @@ def bathroomDoorClear():
 # main Door
 
 def mainDoorRed(inp):
-    deviceArray[7] = inp;
+    deviceArray[31] = inp;
 
 def mainDoorGreen(inp):
-    deviceArray[6] = inp;
+    deviceArray[30] = inp;
 
 def mainDoorBlue(inp):
-    deviceArray[5] = inp;
+    deviceArray[29] = inp;
 
 def mainDoorMagenta(inp):
     mainDoorRed(inp)
@@ -106,13 +106,13 @@ def mainDoorClear():
 # bedroom Door
 
 def bedroomDoorRed(inp):
-    deviceArray[27] = inp;
+    deviceArray[19] = inp;
 
 def bedroomDoorGreen(inp):
-    deviceArray[26] = inp;
+    deviceArray[18] = inp;
 
 def bedroomDoorBlue(inp):
-    deviceArray[25] = inp;
+    deviceArray[17] = inp;
 
 def bedroomDoorMagenta(inp):
     bedroomDoorRed(inp)
@@ -139,13 +139,13 @@ def bedroomDoorClear():
 # studyroom Door
 
 def studyroomDoorRed(inp):
-    deviceArray[30] = inp;
+    deviceArray[22] = inp;
 
 def studyroomDoorGreen(inp):
-    deviceArray[29] = inp;
+    deviceArray[21] = inp;
 
 def studyroomDoorBlue(inp):
-    deviceArray[28] = inp;
+    deviceArray[20] = inp;
 
 def studyroomDoorMagenta(inp):
     studyroomDoorRed(inp)
@@ -172,7 +172,7 @@ def studyroomDoorClear():
 #--------------------- T.V. controls -------------------------
 
 def hallTvPower(inp):
-    deviceArray[14] = inp;
+    deviceArray[6] = inp;
 def hallTv(inp):
     deviceArray[65] = inp;
 
@@ -184,9 +184,9 @@ def bedroomTv(inp):
 #-------------- Washing machine controls --------------------
 
 def washingMachineDrumLight(inp):
-    deviceArray[15] = inp;
+    deviceArray[7] = inp;
 def washingMachineControlPanel(inp):
-    deviceArray[16] = inp;
+    deviceArray[8] = inp;
 def washingMachineDrumMotor(inp):
     deviceArray[39] = inp;
     
@@ -198,23 +198,23 @@ def washingMachine(inp):
 #------------- Geyser control ----------------------
     
 def geyserLightGreen(inp):
-    deviceArray[17] = inp;
+    deviceArray[9] = inp;
 def geyserLightRed(inp):
-    deviceArray[18] = inp;
+    deviceArray[10] = inp;
 
 # ------------ Oven Control --------------------------
 
 def ovenMainLight(inp):
-    deviceArray[22] = inp;
+    deviceArray[14] = inp;
 
 def ovenIndicatorRed(inp):
-    deviceArray[21] = inp;
+    deviceArray[13] = inp;
     
 def ovenIndicatorGreen(inp):
-    deviceArray[20] = inp;
+    deviceArray[12] = inp;
     
 def ovenIndicatorBlue(inp):
-    deviceArray[19] = inp;
+    deviceArray[11] = inp;
 
 def ovenIndicatorMagenta(inp):
     ovenIndicatorRed(inp)
@@ -241,9 +241,9 @@ def ovenIndicatorClear():
 # --------------- chimney control -------------------
 
 def chimneyLightRed(inp):
-    deviceArray[24] = inp
+    deviceArray[16] = inp
 def chimneyLightBlue(inp):
-    deviceArray[23] = inp
+    deviceArray[15] = inp
     
 # -------------- sleep indicator control -------------
 # bedroom
@@ -447,16 +447,16 @@ def hallACSetTemp(t):
 
 # Outdoor
 def outdoorLightsPower(inp):
-    deviceArray[55];
+    deviceArray[55] = inp;
     
 def outdoorLight1(inp):
-    deviceArray[77];
+    deviceArray[77] = inp;
 def outdoorLight2(inp):
-    deviceArray[76];
+    deviceArray[76] = inp;
 def outdoorLight3(inp):
-    deviceArray[75];
+    deviceArray[75] = inp;
 def outdoorLight4(inp):
-    deviceArray[74];
+    deviceArray[74] = inp;
 
 def OutdoorLights(inp):
     outdoorLight1(inp)
@@ -466,12 +466,12 @@ def OutdoorLights(inp):
 
 # Kitchen
 def kitchenLightsPower(inp):
-    deviceArray[63];
+    deviceArray[63] = inp;
 
 def kitchenLight1(inp):
-    deviceArray[78];
+    deviceArray[78] = inp;
 def kitchenLight2(inp):
-    deviceArray[80];
+    deviceArray[80] = inp;
     
 def kitchenLights(inp):
     kitchenLight1(inp)
@@ -479,14 +479,14 @@ def kitchenLights(inp):
 
 # Bedroom
 def bedroomLightsPower(inp):
-    deviceArray[71];
+    deviceArray[71] = inp;
 
 def bedroomLight1(inp):
-    deviceArray[82];
+    deviceArray[82] = inp;
 def bedroomLight2(inp):
-    deviceArray[83];
+    deviceArray[83] = inp;
 def bedroomLight3(inp):
-    deviceArray[84];
+    deviceArray[84] = inp;
 
 def bedroomLights(inp):
     bedroomLight1(inp)
@@ -495,34 +495,34 @@ def bedroomLights(inp):
 
 # Bathroom
 def bathroomLightsPower(inp):
-    deviceArray[47];
+    deviceArray[47] = inp;
 
 def bathroomLight1(inp):
-    deviceArray[81];
+    deviceArray[81] = inp;
 
 def bathroomLights(inp):
     bathroomLight1(inp)
     
 # Hall
 def hallLightsPower(inp):
-    deviceArray[79];
+    deviceArray[79] = inp;
 
 def hallLight1(inp):
-    deviceArray[85];
+    deviceArray[85] = inp;
 def hallLight2(inp):
-    deviceArray[86];
+    deviceArray[86] = inp;
 def hallLight3(inp):
-    deviceArray[88];
+    deviceArray[88] = inp;
 def hallLight4(inp):
-    deviceArray[89];
+    deviceArray[89] = inp;
 def hallLight5(inp):
-    deviceArray[90];
+    deviceArray[90] = inp;
 def hallLight6(inp):
-    deviceArray[91];
+    deviceArray[91] = inp;
 def hallLight7(inp):
-    deviceArray[92];
+    deviceArray[92] = inp;
 def hallLight8(inp):
-    deviceArray[93];
+    deviceArray[93] = inp;
 
 def hallLights(inp):
     hallLight1(inp)
@@ -535,13 +535,13 @@ def hallLights(inp):
     hallLight8(inp)
     
 # Studyroom
-def studyroomLightPower(inp):
-    deviceArray[87];
+def studyroomLightsPower(inp):
+    deviceArray[87] = inp;
 
 def studyroomLight1(inp):
-    deviceArray[94];
+    deviceArray[94] = inp;
 def studyroomLight2(inp):
-    deviceArray[95];
+    deviceArray[95] = inp;
 
 def studyroomLights(inp):
     studyroomLight1(inp)
