@@ -35,7 +35,7 @@ BOOLEAN_ARRAY_LENGTH_BITS = 400 #Length of data to be recieved in bits
 EXPECTED_DATA_PAYLOAD_LENGTH_BYTES = (BOOLEAN_ARRAY_LENGTH_BITS + 7) // 8 # 50 bytes for 400 bits
 
 #---------Global Variables Declaration (for communication between core 0 & core 1) --------------
-#received_boolean_data = [0] * BOOLEAN_ARRAY_LENGTH_BITS
+received_boolean_data = [0] * BOOLEAN_ARRAY_LENGTH_BITS
 a48 = [0] * 48
 b48 = [0] * 48
 c48 = [0] * 48
@@ -167,16 +167,30 @@ def Start_scanMatrix():
 # ----------- Codes below executes at core 0 (default) -----------------
 
 #initializeUART() # Starts listening for incoming data
-_thread.start_new_thread(Start_scanMatrix,()) # Starts matrixCode at core 1
+_thread.start_new_thread(Start_scanMatrix,()) # Starts matrixScanning Code at core 1
 
+
+
+# Optional - program/code hardware state machine using assembly language for sleep animation to split CPU load
 while True:
-    if(!True):
-        #Device Output Update
-        readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
-        #print(a48)
-        utime.sleep(2)
+    readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
+    if(received_boolean_data[288]):         # flag bit index (devices/door)
+        # ----------  Device Output Update -----------------------
+        # set 5v and 3.3v serial registor with recieved data
+        # set 4 pairs of 7-segment display (common data and clock pin , seperate 4 latch pin)
+        
+        
     else:
-        #Door Management code
+        #-------------Door Management code -------------------
+        # Clockwise stepper sequence function
+        # Anti-Clockwise stepper sequence function
+        # FeedBack Logic Analog to digital converted
+        #   ---> Relay control and pin selection
+        #   ---> Feeding external 8-bit registor with live door status data for communication with main CPU
+        #   ---> Protection Logic against uncontrolled/beyond safe angle door movements
+        #   ---> Auto Calibration logic for unusual door movement response
+        #   ---> Disable mechanical door movement if Calibration fails in runtime
+        
         
     
     
