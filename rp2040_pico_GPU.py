@@ -170,8 +170,13 @@ def Start_scanMatrix():
 _thread.start_new_thread(Start_scanMatrix,()) # Starts matrixCode at core 1
 
 while True:
-    readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
-    #print(a48)
-    utime.sleep(2)
+    if(!True):
+        #Device Output Update
+        readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
+        #print(a48)
+        utime.sleep(2)
+    else:
+        #Door Management code
+        
     
     
