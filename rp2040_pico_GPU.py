@@ -12,20 +12,36 @@ from machine import UART, Pin
 
 #   ----------------GPIO Pin Initialization---------------
 
+# GPIO initializatoin user indicator lights
 data = machine.Pin(0, machine.Pin.OUT)    #data for 48 bit ICs(horizontral led line)
 clk = machine.Pin(1, machine.Pin.OUT)     #clock for 48 bit ic(clock to feed horizontal led ICs)
 latch = machine.Pin(4, machine.Pin.OUT)   #latch for 48 bit ICs(to be pulsated once for every 48 bits of data passed)
 
 data_ve = machine.Pin(2, machine.Pin.OUT) #for selecting vertical power line
 clk_ve = machine.Pin(3, machine.Pin.OUT)  #clock for 8 bit IC
-    
+ 
+# GPIO initialization for devices control
+deviceData = machine.Pin(5, machine.Pin.OUT)
+deviceClk = machine.Pin(6, machine.Pin.OUT)
+deviceLatch = machine.Pin(7, machine.Pin.OUT)
+
+# GPIO initialization for 7-seg display pairs
+acMLatch = machine.Pin(8, machine.Pin.OUT)
+acWLatch = machine.Pin(9, machine.Pin.OUT)
+acBLatch = machine.Pin(10, machine.Pin.OUT)
+verLatch = machine.Pin(11, machine.Pin.OUT)
+
+display7Seg_Clk = machine.Pin(14, machine.Pin.OUT) 
+display7Seg_Data = machine.Pin(15, machine.Pin.OUT) 
+
+
     
 TX_PIN = 12 # GP12
 RX_PIN = 13 # GP13
 
 # --- UART Configuration ---
 UART_ID = 0
-BAUD_RATE = 115200 #speed in  bits/second (115200 bits/sec) 
+BAUD_RATE = 115200 #speed in  bits/second (115200 bits/sec)
 
 # --- Communication Protocol  ---
 START_MARKER = b'\x02\x05'
@@ -54,6 +70,8 @@ def updateFrameData(received_boolean_data):
     d48 = received_boolean_data[144:192]
     e48 = received_boolean_data[192:240]
     f48 = received_boolean_data[240:288]
+
+
 
 # --- Function to convert bytearray to boolean list ---
 def bytes_to_bits(byte_array, num_bits):
@@ -164,6 +182,19 @@ def Start_scanMatrix():
         setmem(e48)
         setmem(f48)
 
+
+def setData():
+    dataArray = device_control.deviceArray;
+    for x in range (96):
+        deviceData.value(dataArray[288 + x])
+        deviceClk.high()
+        time.sleep(.01)
+        deviceClk.low()
+        time.sleep(.01)
+    latch.high()
+    time.sleep(.1)
+    latch.low()
+    #print("Transmitted")
 # ----------- Codes below executes at core 0 (default) -----------------
 
 #initializeUART() # Starts listening for incoming data
@@ -176,12 +207,16 @@ while True:
     readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
     if(received_boolean_data[288]):         # flag bit index (devices/door)
         # ----------  Device Output Update -----------------------
+        
+        
+        
         # set 5v and 3.3v serial registor with recieved data
+        setData();
         # set 4 pairs of 7-segment display (common data and clock pin , seperate 4 latch pin)
         
         
     else:
-        #-------------Door Management code -------------------
+        # -----------  Door Management code -------------------
         # Clockwise stepper sequence function
         # Anti-Clockwise stepper sequence function
         # FeedBack Logic Analog to digital converted
