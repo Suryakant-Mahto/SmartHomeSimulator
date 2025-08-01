@@ -404,7 +404,7 @@ def setDisplay(d1,d2,t):
     t1 = int(t/10);
     t2 = int(t%10);  
     setDigit(d1,t1)
-    time.sleep(0.5)
+    time.sleep(0.1)
     setDigit(d2,t2)
     
 # Bedroom AC
