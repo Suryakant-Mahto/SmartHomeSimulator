@@ -47,8 +47,8 @@ BAUD_RATE = 115200 #speed in  bits/second (115200 bits/sec)
 START_MARKER = b'\x02\x05'
 START_MARKER_LEN = len(START_MARKER)
 
-BOOLEAN_ARRAY_LENGTH_BITS = 400 #Length of data to be recieved in bits
-EXPECTED_DATA_PAYLOAD_LENGTH_BYTES = (BOOLEAN_ARRAY_LENGTH_BITS + 7) // 8 # 50 bytes for 400 bits
+BOOLEAN_ARRAY_LENGTH_BITS = 480 #Length of data to be recieved in bits
+EXPECTED_DATA_PAYLOAD_LENGTH_BYTES = (BOOLEAN_ARRAY_LENGTH_BITS + 7) // 8 # 60 bytes for 480 bits
 
 #---------Global Variables Declaration (for communication between core 0 & core 1) --------------
 received_boolean_data = [0] * BOOLEAN_ARRAY_LENGTH_BITS
@@ -186,7 +186,7 @@ def Start_scanMatrix():
 def setData():
     dataArray = device_control.deviceArray;
     for x in range (96):
-        deviceData.value(dataArray[288 + x])
+        deviceData.value(dataArray[289 + x])
         deviceClk.high()
         time.sleep(.01)
         deviceClk.low()
@@ -213,6 +213,8 @@ while True:
         # set 5v and 3.3v serial registor with recieved data
         setData();
         # set 4 pairs of 7-segment display (common data and clock pin , seperate 4 latch pin)
+        
+        
         
         
     else:
