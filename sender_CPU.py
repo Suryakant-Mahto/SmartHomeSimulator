@@ -12,7 +12,7 @@ BAUD_RATE = 115200
 # Start marker to indicate the beginning of a data packet
 START_MARKER = b'\x02\x05' # Using two unique bytes (STX and ENQ as per ASCII)
 # Length of the boolean array in bits
-BOOLEAN_ARRAY_LENGTH_BITS = 400
+BOOLEAN_ARRAY_LENGTH_BITS = 480
 # Calculate the number of bytes needed to store the boolean array
 DATA_PAYLOAD_LENGTH_BYTES = (BOOLEAN_ARRAY_LENGTH_BITS + 7) // 8 # Ceiling division
 
@@ -45,7 +45,7 @@ def main():
             #boolean_data = [(i % 2 == 0) for i in range(BOOLEAN_ARRAY_LENGTH_BITS)]
 
             # Or a random pattern
-            boolean_data = [0] * 400
+            boolean_data = [0] * BOOLEAN_ARRAY_LENGTH_BITS
             boolean_data[0]=1
             boolean_data[1]=1
 
