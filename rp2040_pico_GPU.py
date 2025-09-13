@@ -59,7 +59,7 @@ d48 = [0] * 48
 e48 = [0] * 48
 f48 = [0] * 48
 
-# function to prepare recieved data for further transmission to hardware compatiblity
+# function to prepare recieved data for further transmission to hardware
 def updateFrameData(received_boolean_data):
     global a48,b48,c48,d48,e48,f48
     #print(received_boolean_data)
@@ -194,6 +194,53 @@ def setData():
     latch.high()
     time.sleep(.1)
     latch.low()
+    
+def set7Seg(init_INDEX):
+    dataArray = device_control.deviceArray;
+    
+    start_index = init_INDEX
+    for x in range (16):
+        display7Seg_Data.value(dataArray[start_index + x])
+        display7Seg_Clk.high()
+        time.sleep(.01)
+        display7Seg_Clk.low()
+        time.sleep(.01)
+    acMLatch.high()
+    time.sleep(.1)
+    acMLatch.low()
+    
+    start_index = init_INDEX + 16
+    for x in range (16):
+        display7Seg_Data.value(dataArray[start_index + x])
+        display7Seg_Clk.high()
+        time.sleep(.01)
+        display7Seg_Clk.low()
+        time.sleep(.01)
+    acWLatch.high()
+    time.sleep(.1)
+    acWLatch.low()
+
+    start_index = init_INDEX + 32
+    for x in range (16):
+        display7Seg_Data.value(dataArray[start_index + x])
+        display7Seg_Clk.high()
+        time.sleep(.01)
+        display7Seg_Clk.low()
+        time.sleep(.01)
+    acBLatch.high()
+    time.sleep(.1)
+    acBLatch.low()
+    
+    start_index = init_INDEX + 48
+    for x in range (16):
+        display7Seg_Data.value(dataArray[start_index + x])
+        display7Seg_Clk.high()
+        time.sleep(.01)
+        display7Seg_Clk.low()
+        time.sleep(.01)
+    verLatch.high()
+    time.sleep(.1)
+    verLatch.low()
     #print("Transmitted")
 # ----------- Codes below executes at core 0 (default) -----------------
 
@@ -213,7 +260,7 @@ while True:
         # set 5v and 3.3v serial registor with recieved data
         setData();
         # set 4 pairs of 7-segment display (common data and clock pin , seperate 4 latch pin)
-        
+        set7Seg(385);
         
         
         
