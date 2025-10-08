@@ -1,4 +1,5 @@
 # 11 GPIO pins utilized (10,11,12,13,14,15,16,17,18,19,20)
+# 3 ADC pins utilized (ADC0, ADC1, ADC2)
 
 import machine
 from machine import Pin
@@ -6,8 +7,8 @@ import time
 
 motor_pins = [Pin(10, Pin.OUT), Pin(11, Pin.OUT), Pin(12, Pin.OUT), Pin(13, Pin.OUT)]   # pins connected to the ULN2003 driver
 
-relay1 = machine.Pin(14, machine.Pin.OUT, machine.Pin.PULL_DOWN)
-relay2 = machine.Pin(15, machine.Pin.OUT, machine.Pin.PULL_DOWN)
+relay1 = machine.Pin(14, machine.Pin.OUT, machine.Pin.PULL_DOWN)  # switch between bedroom{0} and main{1} analog input
+relay2 = machine.Pin(15, machine.Pin.OUT, machine.Pin.PULL_DOWN)  # switch between bathroom{0} and studyroom{1} analog input
 
 m1 = machine.Pin(16, Pin.OUT)      # Studyroom Door
 m2 = machine.Pin(17, Pin.OUT)      # Bathroom Door
@@ -30,8 +31,8 @@ def door_selector_reset():
     m4.low()
     m5.low()
     
-relay_reset()                   # Initialize relays with default state
-door_selector_reset()
+relay_reset()                   # Initialize relays with default state {0}
+door_selector_reset()           # Sets door selector flag to {0} for all doors
 
 full_step_sequence = [          # the order sequence in which the coils are energized for stepping
     [1, 0, 0, 0],
@@ -164,11 +165,12 @@ def close_door(x):
             relay_reset()
             door_selector_reset()
 
-def open_door_rev(x):    # *Strictly for testing only (close_door function is ineffective after open_door_rev is called for any door)
+def open_door_rev(x):    # *Strictly for testing only (close_door function don't respond after open_door_rev is called for any door)
     inp = x              # To reset door position first open_door must be called followed by close_door function for that very door)
     if True:
         if inp == "main":
             relay1.value(1)
+            time.sleep(0.5)
             m5.high()
             doorPosition = (int(sensor1.read_u16())/65535) * 100
             while (doorPosition <= 99):
@@ -215,21 +217,10 @@ def open_door_rev(x):    # *Strictly for testing only (close_door function is in
             door_selector_reset()
 
 
-
+'''
+# ----------------------Test Code------------------------
 while True:
-    '''
-    relay1.high()
-    time.sleep(1)
-    relay1.low()
-    time.sleep(1)
-    relay2.high()
-    time.sleep(1)
-    relay2.low()
-    time.sleep(1)
-    
-    
-    
-    '''
+
     open_door("main")
     close_door("main")
     
@@ -238,11 +229,13 @@ while True:
     
     open_door("bathroom")
     close_door("bathroom")
+    
     open_door("bedroom")
     close_door("bedroom")
+    
     open_door("studyroom")
     close_door("studyroom")
-    
+'''  
     
     
 
