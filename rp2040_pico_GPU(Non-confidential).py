@@ -34,6 +34,8 @@ verLatch = machine.Pin(11, machine.Pin.OUT)
 display7Seg_Clk = machine.Pin(14, machine.Pin.OUT) 
 display7Seg_Data = machine.Pin(15, machine.Pin.OUT) 
 
+motor_pins = [Pin(16, Pin.OUT), Pin(17, Pin.OUT), Pin(18, Pin.OUT), Pin(19, Pin.OUT)]   # pins connected to the ULN2003 driver
+
 
     
 TX_PIN = 12 # GP12
@@ -194,55 +196,49 @@ def setData():
     latch.high()
     time.sleep(.1)
     latch.low()
-    
-def set7Seg(init_INDEX):
-    dataArray = device_control.deviceArray;
-    
-    start_index = init_INDEX
-    for x in range (16):
-        display7Seg_Data.value(dataArray[start_index + x])
-        display7Seg_Clk.high()
-        time.sleep(.01)
-        display7Seg_Clk.low()
-        time.sleep(.01)
-    acMLatch.high()
-    time.sleep(.1)
-    acMLatch.low()
-    
-    start_index = init_INDEX + 16
-    for x in range (16):
-        display7Seg_Data.value(dataArray[start_index + x])
-        display7Seg_Clk.high()
-        time.sleep(.01)
-        display7Seg_Clk.low()
-        time.sleep(.01)
-    acWLatch.high()
-    time.sleep(.1)
-    acWLatch.low()
-
-    start_index = init_INDEX + 32
-    for x in range (16):
-        display7Seg_Data.value(dataArray[start_index + x])
-        display7Seg_Clk.high()
-        time.sleep(.01)
-        display7Seg_Clk.low()
-        time.sleep(.01)
-    acBLatch.high()
-    time.sleep(.1)
-    acBLatch.low()
-    
-    start_index = init_INDEX + 48
-    for x in range (16):
-        display7Seg_Data.value(dataArray[start_index + x])
-        display7Seg_Clk.high()
-        time.sleep(.01)
-        display7Seg_Clk.low()
-        time.sleep(.01)
-    verLatch.high()
-    time.sleep(.1)
-    verLatch.low()
     #print("Transmitted")
+    
 # ----------- Codes below executes at core 0 (default) -----------------
+
+#--------------  Door stepper control code ---------------------------
+
+full_step_sequence = [          # the order sequence in which the coils are energized for stepping
+    [1, 0, 0, 0],
+    [1, 1, 0, 0],
+    [0, 1, 0, 0],
+    [0, 1, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 1],
+    [0, 0, 0, 1],
+    [1, 0, 0, 1],
+]
+
+
+steps_per_90_degrees = 100  # Steps for 90 degree
+
+def move_forward():          # Function to move the motor forward
+    t = 2
+    for s in range(steps_per_90_degrees):
+        if s > 90:
+            t=t+1
+        for step in full_step_sequence:
+            for i in range(4):
+                motor_pins[i].value(step[i])
+            time.sleep_ms(t)             # delay based on motor's speed
+            
+
+def move_backward():           # Function to move the motor backward
+    t = 2
+    for s in range(steps_per_90_degrees):
+        if s > 90:
+            t = t+1
+        for step in reversed(full_step_sequence):
+            for i in range(4):
+                motor_pins[i].value(step[i])
+            time.sleep_ms(t)             # delay based on your motor's speed
+
+
+
 
 #initializeUART() # Starts listening for incoming data
 _thread.start_new_thread(Start_scanMatrix,()) # Starts matrixScanning Code at core 1
@@ -250,24 +246,28 @@ _thread.start_new_thread(Start_scanMatrix,()) # Starts matrixScanning Code at co
 
 
 # Optional - program/code hardware state machine using assembly language for sleep animation to split CPU load
+
+received_boolean_data[288] = 1 # sets default state as device control
 while True:
     readBuffer() # Reads any recived data and process it for further transmission to hardware driver circuit 
     if(received_boolean_data[288]):         # flag bit index (devices/door)
         # ----------  Device Output Update -----------------------
         
         
-        
         # set 5v and 3.3v serial registor with recieved data
         setData();
         # set 4 pairs of 7-segment display (common data and clock pin , seperate 4 latch pin)
-        set7Seg(385);
+        #set7Seg(385);
         
         
         
     else:
+        print("Else")
+        utime.sleep(1)
         # -----------  Door Management code -------------------
         # Clockwise stepper sequence function
         # Anti-Clockwise stepper sequence function
+        
         # FeedBack Logic Analog to digital converted
         #   ---> Relay control and pin selection
         #   ---> Feeding external 8-bit registor with live door status data for communication with main CPU
